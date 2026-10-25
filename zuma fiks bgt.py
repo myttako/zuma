@@ -186,9 +186,9 @@ class kodokzumzum:
         self.sudut = math.atan2(pos[1] - pusat[1], pos[0] - pusat[0])
 
     def tukar_Warna(self):
-        lama = self.Warna_peluru
-        self.ganti_Warna(self.Warna_berikut)
-        self.Warna_berikut = lama
+        warna_list = list(Warna.keys())
+        idx = warna_list.index(self.Warna_peluru)
+        self.ganti_Warna(warna_list[(idx + 1) % len(warna_list)])
 
     def dor(self, Warna_berikut_baru):
         if not self.is_active:
@@ -389,8 +389,8 @@ class playeuu:
                 r[i].d = min(butuh, r[i].d + push)
 
         for b in r:
-            b.off_x *= 0.78
-            b.off_y *= 0.78
+            b.off_x *= 0.88
+            b.off_y *= 0.88
             if abs(b.off_x) < 0.5:
                 b.off_x = 0.0
             if abs(b.off_y) < 0.5:
@@ -466,7 +466,6 @@ class playeuu:
         bola.off_y = p.y - py
         r.insert(k, bola)
 
-        self.kombo = 1
         self.cek_cocok(k)
         self.sinkron_Warna()
 
